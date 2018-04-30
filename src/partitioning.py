@@ -585,69 +585,11 @@ def quadTreeSample(pts, min_cell_size=100, cell_sample_size=1):
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
     import matplotlib
-    import partitioning_tests
-    import line_testing
-    pts = partitioning_tests.upload_crimes("crimes.csv")
-
-    pts = random.sample(pts, 100000)
-
-    matplotlib.rcParams['figure.figsize'] = [20.0, 20.0]
-
-
-    tree = chan_partitions2(pts, b = 28, min_cell_size=100)
-
+    pts = [(random.random(), random.random()) for i in range(100000)]
+    tree = chan_partitions2(pts, b=28, min_cell_size=100)
     f, ax = plt.subplots()
     s_pts = random.sample(pts, 10000)
     x, y = zip(*pts)
     ax.scatter(x, y, marker='.')
-
     tree.visualize_arrangement(ax, min(x), max(x), min(y), max(y))
     plt.show()
-    
-    
-# if __name__ == "__main__":
-#     import matplotlib.pyplot as plt
-#     import matplotlib
-#     import partitioning_tests
-#     #pts = partitioning_tests.upload_crimes("crimes.csv")
-# #
-#     pts = [(random.random(), random.random()) for i in range(1000000)]
-#     quadTreeSample(pts)
-#     segment_class = segment_search(pts)
-#     lines = segment_class.get_all_lines()
-#
-#     segment = Segment(to_line(pts[0], pts[1]), pts[0][0], pts[1][0])
-#     small_lines = segment_class.count_segment(segment)
-#     f, ax = plt.subplots()
-#     min_x = 0
-#     max_x = 1
-#     min_y = 0
-#     max_y = 1
-#
-#     for l in lines:
-#          poly.visualize_line(ax, l, min_x, max_x, min_y, max_y, "r", .5)
-#
-#     for l in small_lines:
-#         poly.visualize_line(ax, l, min_x, max_x, min_y, max_y, "b", .5)
-#
-#     poly.visualize_edge(ax, segment, min_x, max_x, min_y, max_y, "k", 5)
-#
-#     matplotlib.rcParams['figure.figsize'] = [20.0, 20.0]
-#     #tree = chan_partitions2(pts, 128)
-#     #s_pts = random.sample(pts, 10000)
-#     #x, y = zip(*s_pts)
-#     #ax.scatter(x, y, marker='.')
-#     #tree.visualize_arrangement(ax, 0, 1, 0, 1)
-#     ax.set_ylim([0, 1])
-#     ax.set_xlim([0, 1])
-#     plt.show()
-
-
-#random_sample_time_plot2(999, 1000, 100000, 10)
-#print("got here")
-#time_plot2(200, 10000, 1000000, 20, r=2, c=.1)
-#error_plot_output_size(100000, 100, 800, 10, r=2)
-#random_sample_plot(100000, 200, 1200, 20)
-#random_error_plot(10000, 20, 200, 20, r=2048, c=.1)
-#random_error_plot2(10000, 200, 1, 10, 20, r=2048, c=.1)
-#random_sample_time_plot(10000, 50, 1000, 100)
